@@ -5,9 +5,10 @@
 
 // second method ( most used ) - object literals
 
+// ---Note -----------------
 // suppose we have a symbol - we will access through the [square bracket method]
 const mySum = Symbol("key1")
-
+// --------- Back to where we were ---------
 
 const JsUser = {
     name: "Abhishek" ,
@@ -30,7 +31,7 @@ console.log(JsUser["full name "])
 console.log(JsUser[mySum]) 
 
 
-// to change value - use = 
+// to change value -> use "=" 
 JsUser.email = "abhishekgogogo@google.com"
 
 // when we want to freeze the object - so no further changes
@@ -38,6 +39,8 @@ JsUser.email = "abhishekgogogo@google.com"
 // eg
 // JsUser.email = "asdasdaskldhasdha@gmail.com"
 // console.log(JsUser); // it won't change now 
+
+// ------------------------------------
 
 // to declare a function inside Objects
 
