@@ -71,6 +71,9 @@ const addTwo = function(num){ // this is called expression ( also a function , j
     return num + 2
 }
 
+// -------Brief about lexical scope-------
+//Lexical scope means that 
+// a function can access variables from the scope in which it was defined (not where it is called).
 
 
 
