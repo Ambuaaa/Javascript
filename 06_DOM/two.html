@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DOM | Chai aur code </title>
+</head>
+<body style = "background-color: black; color: white;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+    
+</body>
+
+<script>
+    const parenttt = document.querySelector('.parent')
+    console.log(parenttt);
+    console.log(parenttt.children); // every elements have it's children
+    console.log(parenttt.children[1].innerHTML); // Tuesday
+    
+    for(let i = 0 ; i < parenttt.children.length ; i++){
+        console.log(parenttt.children[i].innerHTML) ; // Monday Tuesday Wednesday Thursday Friday Saturday Sunday
+    }
+
+    parenttt.children[1].style.color = "orange " // Changes Tuesday to Orange
+    console.log(parenttt.firstElementChild ); //Monday
+    console.log(parenttt.lastElementChild ); // Sunday
+
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne);
+
+    // going from children to parent
+    console.log(dayOne.parentElement); // <div class="parent">
+    console.log(dayOne.nextElementSibling); // <div class="day" style="color: orange;">Tuesday</div>
+
+    console.log("NODES:" , parenttt.childNodes);
+    
+    /*
+    -------------NodeList--------------
+    A NodeList is a collection of DOM nodes returned by properties like childNodes, querySelectorAll(), etc.
+    It can include element nodes, text nodes (such as spaces and line breaks), and comment nodes.
+    Line breaks and whitespace in HTML can create text nodes, and comments are also preserved in the DOM as separate comment nodes (nodeType 8).
+    Browsers typically collapse multiple spaces or line breaks into one, so not every visual break results in a new node.
+
+    */
+        
+    
+    
+    
+</script>
+</html>

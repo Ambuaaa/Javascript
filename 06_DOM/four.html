@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chai aur Code | DOM </title>
+</head>
+<body style="background-color: black; color: white;" >
+    <ul class="language">
+        <li>  JavaScript </li>
+    </ul>
+    
+    
+    
+</body>
+
+<script>
+    //-----------Add the element----------------
+    //Function to add a new programming language to the <ul> dynamically
+    function addLanguage(langName){
+        const li = document.createElement('li');  // Step 1: Create a new <li> element using .createElement()
+        li.innerHTML = `${langName}` //  // Step 2: Set its inner HTML to the language name passed as argument
+         
+        // Step 3: Append the new <li> as a child to the <ul> with class "language"
+            document.querySelector('.language').appendChild(li) // appending it back to the document 
+
+            // innerHTML += forces re-rendering and re-parsing of inner content, which can be slower and unsafe if used often or with user input.
+            // For performance and safety, prefer appendChild() when dynamically creating elements — especially in loops or large UIs.
+   
+    }
+    addLanguage("python")
+    addLanguage("Java")
+
+//-----------Optimised Approach ----------------
+function optimisedLanguage (langName){
+    // Step 1: Create a new <li> element
+    const li = document.createElement('li') ;
+    // Step 2: Create a text node with the language name and append it to the <li>
+    li.appendChild(document.createTextNode(langName)) 
+    // Step 3: Select the <ul> with class "language" and append the new <li> to it
+    document.querySelector('.language').appendChild(li)
+}
+optimisedLanguage("GOlang")
+
+// -----Edit the value ----------
+// Step 1: Select the second <li> using correct CSS selector
+const secondlang = document.querySelector("li:nth-child(2)")
+// Step 2: Create a new <li> element // we can aloso simply do secondlang.innerHTML = "rust"
+const newLi = document.createElement('li')
+// Step 3: Add the text "Rust" (or any new value) to the new <li>
+newLi.appendChild(document.createTextNode("Rust"))
+
+// Step 4: Replace the old second <li> with the new one
+secondlang.replaceWith(newLi);
+
+/*
+---------Or you can simply do -------------- 
+const secondlang = document.querySelector("li:nth-child(2)")
+const newLi = document.createElement('li')
+newLi.textContent = "Rust"
+secondlang.replaceWith(newLi)
+*/
+
+//----Changing 1st child(Javascipt) to TypeScript------
+const secondchange = document.querySelector("li:nth-child(1)") // 1st li selected
+const newwli = document.createElement('li') // or simply do - secondchange.outerHTML = '<li>TypeScript</li> ' ( and done nothing else )
+newwli.appendChild(document.createTextNode("TypeScript"))
+secondchange.replaceWith(newwli)
+
+//-------remove element--------
+const lastlang = document.querySelector("li:nth-child(4)")
+lastlang.remove()
+
+
+</script>
+</html>
