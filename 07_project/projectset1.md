@@ -5,7 +5,7 @@
 
 # Solution code
 
-## Project 1
+## Project 1 - Background Color changer
 
 ```javascript
 const buttons = document.querySelectorAll('.button') ;// 1) Selecting elements with buttons because in future we can loop 
@@ -38,7 +38,7 @@ buttons.forEach( (button) => {
 ```
 
 ``` javascript
-## Project 2 Solution 
+## Project 2 - BMI calculator
 
 const form = document.querySelector('form') ;
 // this usecase will give you empty value 
