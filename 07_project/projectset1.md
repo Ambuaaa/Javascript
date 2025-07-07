@@ -72,3 +72,22 @@ form.addEventListener('submit' , (e) => {
 });
 
 ```
+``` javascript
+## Project 3 - Digital clock
+
+// how to display time
+
+const clock = document.getElementById("clock") ;
+// const clock = document.querySelector('#clock') 
+
+
+
+//setInterval() is a built-in JavaScript function that repeatedly runs a function at fixed time intervals (in milliseconds)
+// setInterval(function(){} , 1000)
+
+setInterval(() => {
+  let date = new Date() ;
+  clock.innerHTML = date.toLocaleTimeString() ;
+}, 1000);
+
+```
