@@ -35,7 +35,40 @@ buttons.forEach( (button) => {
   });
 });
 
+```
 
+``` javascript
+## Project 2 Solution 
 
+const form = document.querySelector('form') ;
+// this usecase will give you empty value 
+form.addEventListener('submit' , (e) => {
+  e.preventDefault(); // preventing to submit(default)
+
+  const height = parseInt(document.querySelector('#height').value) ; // pareseINt because the value will be in string so we have to convert it to int
+  const weight = parseInt(document.querySelector('#weight').value) ;
+  const results= document.querySelector('#results') ;
+
+  if(height === '' || height < 0 || isNaN(height)){
+    results.innerHTML = `Please give a valid height ${height}` ; 
+  }
+  else if(weight === '' || weight <0 || isNaN(weight)){
+    weight.innerHTML = `Please give a valid weight &{weight}` ;
+  } else{
+    const bmi = (weight / ((height*height) / 10000)).toFixed(2);
+    // we have to display this bmi in the results
+    const result = results.innerHTML = `<span>${bmi}</span> <br>`; // span because of  HTML structure.
+    if(result<18.6){
+      results.innerHTML = ` ${bmi} = Under Weight` ; 
+    }
+    if(18.6<result<24.9){
+      results.innerHTML = `${bmi} = Normal Range` ; 
+    }
+    if(result>24.9){
+      results.innerHTML = `${bmi} = Overweight` ; 
+    }
+  }
+
+});
 
 ```
