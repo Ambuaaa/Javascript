@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HTML Events </title>
+</head>
+<body style="background-color: rgb(77, 48, 11); color: aliceblue;" >
+     <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+//    document.getElementById('owl').onclick = function(){
+//     alert("Owl") ; 
+//    }   // This approach is not so good because we are directly using .onclick which gives us
+// less functionality
+
+// ------JavaScript Event Objects--------
+// The event object in JavaScript provides details about the event that just occurred. You can use it to detect where it happened, what key was pressed, or whether Ctrl/Shift/Alt were held.
+// It's passed automatically to event handlers like addEventListener.
+
+// // type , timestamp , defaultPrevented , 
+// target , toElement, srcElement , currentTarget ,
+// clientX , clientY , screenX , screenY 
+// altKey , ctrlKey , shiftKey , keyCode 
+
+document.getElementById('images').addEventListener('click' , function(e){
+    console.log("Clicked inside the UL");
+} , false)
+
+document.getElementById('owl').addEventListener('click' , function(e){
+    console.log("Owl clicked");
+    e.stopPropagation ; // now it won't go to the upper tree
+
+} , false)
+
+document.getElementById('google').addEventListener('click' , function(e){
+    e.preventDefault() ; // ab google pe click karoge to nahi redirect hoga 
+    console.log("google clicked") ; 
+},false) 
+
+
+</script>
+
+<!-- Notess 
+1) Javascript is a sequentially run langugage ,
+hence all the events runs sequentially . (synchronous)
+
+2) Syntax of addEventListener():
+
+element.addEventListener(event, listener, useCapture);
+
+event: like 'click', 'keydown', etc.
+listener: the callback function to run
+useCapture: (optional, false by default)
+
+The third parameter in addEventListener() 
+controls whether the event is handled during the capture (true) or 
+bubbling (false) phase.
+Most developers omit it or use false, because bubbling matches 
+normal event flow and works for most use cases.
+bubbling - inside se outside - neeche se upar tak
+capturing - outside se inside - upar se niche tak 
+
+-->
+
+
+</html>
