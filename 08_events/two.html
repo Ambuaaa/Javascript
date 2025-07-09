@@ -3,42 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> HTMl Events</title>
+    <title> Events || JS </title>
 </head>
-<body style="background-color: rgb(77, 48, 11); color: aliceblue;" >
-     <h2>Amazing image</h2>
-    <div >
-        <ul id="images">
-            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
-            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
-            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
-        </ul>
-   </div>
+<body>
+    <h1>Chai aur code </h1>
+    <button id="stop">Stop</button>
+    
 </body>
-
 <script>
-    // Suppose when we click the image , it dissapers . How to write the code
+//1)settimeout() - this is a method only but calls an API 
+// it is only executes one time ( think as a setting one time alarm)
+// also this is a handler => meaning that the function has no name , that's why () is empty
 
-    // targetiing ul 
-    document.querySelector('#images').addEventListener('click' , function(e){
-        // console.log(e.target.parentNode); // we used parentNode because we want to target the whole parent(here li) . 
-        console.log(e.target.tagName) ; 
+    // setTimeout( function () {
+    //     console.log("Abhishek");
         
-        if(e.target.tagName === 'IMG'){ // if we do not use.tagName , if we click on li , eerything get vanished , so to ensure checks
-            console.log(e.target.tagName);
-            
-            let removeIt = e.target.parentNode ;
-        removeIt.remove() ; // first approach 
-        // removeIt.parentNode.removeChild(removeIt) ; // second approach 
+    // } , 2000 )
 
-        }
-        
-        
-    } , false);
+// ------Or doing it like(making function)------- 
+// after 2 sec the name of Abhishek will change and "Best JS series will appear"
+
+/*
+const sayAbhishek = function (){
+    console.log("Abhishek");
+}
+const changeText = function(){
+    document.querySelector('h1').innerHTML = "Best JS series"
+}
+
+setTimeout(changeText , 2000) ; // do not use sayAbhishek() because it will execute it , we just want reference 
+// but bro , it is also important to understand when it will be stopped. by -.clearTimeout()
+// "clearTimeout() is often used inside event handlers (like click or mousemove) to cancel a scheduled setTimeout(), but it itself is not part of the event system."
+
+*/
+// using clearTimeout() 
+const sayAbhishek = function (){
+    console.log("Abhishek");
+}
+const changeText = function(){
+    document.querySelector('h1').innerHTML = "Best JS series"
+}
+
+const ChangeMe = setTimeout(changeText , 5000) ; // creating a reference to let it pass on inside the clearTimeout
+// clearTimeout(ChangeMe) ; 
+// let's put it in an event
+
+document.querySelector('button').addEventListener('click' , function(){
+    clearTimeout(ChangeMe) ;
+    console.log("STOPPED");
+     
+} , false) 
+
 
 </script>
 
+
 </html>
+
+<!-- Notess
+
+✅ function(e) { ... } — with a parameter: => e is just a function parameter
+
+The e (short for event) is the event object automatically passed by the browser.
+It contains details about the event like:
+e.target — which element was clicked
+e.type — type of event
+e.preventDefault() — prevent default behavior (like form submission)
+Use this when you need to access event info.
+
+✅ function() { ... } — without parameter:
+You're not using the event object at all.
+
+Totally fine if you don’t need any event-related info.
+
+ -->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Events || JS </title>
+</head>
+<body>
+
+    <h1>Chai aur JavaScript </h1>
+    <button id="start"> Start </button>
+    <button id="stop"> Stop </button>
+    
+</body>
+<script>
+//-------Setinterval-----------
+// const sayDate = function (str){
+//      console.log(str , Date.now());
+// }
+//     const intervalID = setInterval(sayDate , 1000 , "hello") // it also has third parameter
+
+//     clearInterval(intervalID)
+//-------Code for printing name when start button pressed and stop button when stop button pressed
+
+let intervalID ; // Declare globally so both buttons can access
+
+// function to print name 
+const sayName = function(){
+    console.log("Abhishek");
+}
+// Start button handler 
+document.querySelector('#start').addEventListener('click' , function(){
+    console.log("Started") ;
+
+    if(!intervalID){ // check to remove Multiple intervals if "Start" clicked many times
+        intervalID = setInterval(sayName , 1000) ; // it will print the name 
+    }
+} , false) ;
+
+
+// Stop button handler
+document.querySelector('#stop').addEventListener('click' , function(){
+    console.log("Ended") ; 
+
+    clearInterval(intervalID) ;
+    intervalID = null; // Reset to allow restart
+} , false);
+
+</script>
+
+
+</html>
