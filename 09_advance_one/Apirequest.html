@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+
+Value	        State	                    Description
+0	            UNSENT	        Client has been created. open() not called yet.
+1	            OPENED	        open() has been called.
+2	        HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	            LOADING	        Downloading; responseText holds partial data.
+4	             DONE	        The operation is complete.
+
+
+</body>
+<script>
+    const requestURL = "https://api.github.com/users/Ambuaaa" ;
+    const xhr = new XMLHttpRequest() ;
+    xhr.open('GET', requestURL) ; // open apne aap me call nahi hota hai 
+    
+    xhr.onreadystatechange = function(){ // we are checking the state using = .onreadystatechange
+    console.log(xhr.readyState); // chal raha hai bhai continously => 2,3,4
+        if(xhr.readyState=== 4){ //detecting the state
+            // console.log(this.responseText); // current context pe "this" lagaya jata hai... responsetext ke badle kuch bhi likh sakte the ..kuch bhi .... bas "this" lagana jaruri hai 
+            // we can now see that everything is here in the console
+            // now if we want to extract the followers from the data, what we have to do 
+            // const data = this.responseText ; // this will store in a variable
+            // console.log(data.followers) ; // by this we will get the follower
+            // but when we console it , the answer is "undefined" . The reason is :-
+            // when we see the data type of "data" variable it is in String
+            // we have to convert it to the JSON data type using = JSON.parse 
+
+
+            const data = JSON.parse(this.responseText);
+            console.log(data.followers); //5
+            
+        }
+
+    }
+    
+    xhr.send() ; // called
+
+</script>
+
+</html>
+
+// ---------Notes --------------
