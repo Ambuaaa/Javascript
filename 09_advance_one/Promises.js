@@ -107,8 +107,15 @@ fetch('https://api.github.com/users/Ambuaaa')
 .catch( (error) => {
     console.log(error);
 })
+
+
+
+
+
+
+
 // Question:- Why the values from this api using fetch is showing above all the other value ; even though in some place , we haven't used the setinterval ?
-// ANswer - next part 
+// ANswer - As we can see from the diagram , a special priority queue (called Microtask Queue ) is made fir the fetch , Hence it is executed first 
 //--------------------------------------------------------------------------------------------------
 
 // ✅ Crisp Explanation:
