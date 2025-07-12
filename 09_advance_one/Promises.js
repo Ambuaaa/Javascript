@@ -14,6 +14,7 @@ promiseOne.then( function(){ // resolve is directly connected to .then
     console.log("Promise consumed");
 }) 
 
+
 // ------------------------------
 new Promise(function(resolve , reject) {
     setTimeout(function(){
@@ -191,5 +192,8 @@ fetch('https://api.github.com/users/Ambuaaa')
 // "This is not working"
 
 // The actual error message: "Error: HTTP error: 404"
+
+
+//-----------------------------------------------------
 
 
