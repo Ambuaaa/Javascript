@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> React </title>
+</head>
+<body>
+    <button> Button clicked </button>
+</body>
+
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+            // req - 1) to get refernece of button 2) to print
+        
+        document
+        .querySelector('button')
+        .addEventListener('click' , this.handleclick.bind(this)) // we have to attach using .bind() keyword => we send all the functions and in handleClick
+        // 	Forces this to always refer to your class object
+        }
+
+
+        handleclick(){
+            console.log("Button clicked");
+            console.log(this.server);
+        }
+    }
+
+    const app = new React()
+
+</script>
+</html>
