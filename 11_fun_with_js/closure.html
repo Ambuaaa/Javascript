@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Closure aur chai </title>
+</head>
+<body style = "background-color: black; color: wheat;"   >
+    <button id="orange" > Orange Button</button>
+    <button id="green"> Green Button </button>
+    
+</body>
+
+<!-- This contains Lexical scoping  -->
+<script>
+//Think this like a family . Parent will share the things among their child but their child will not share the things between them
+// Also thier child will not share the properties to their parent.
+// This is called Lexical scoping.
+
+// -----This is called Lexical scoping-------------
+    function init() {
+        let name = "Mozilla"; // name is a local variable created by init
+    
+        function displayName() {
+        // displayName() is the inner function, that forms a closure
+        console.log(name); // use variable declared in the parent function
+    }
+  displayName();
+}
+init();
+
+// we know that any variables that we declare inside the funtion is not avaiable outside the function (outer scope)
+function outer(){
+    let username = "abhishek"
+
+}
+console.log(username);
+//-----------
+
+//-------------------Closure-------------------------
+// jab bhi aap pura function return karte ho, to uska function return nahi hota , pura ka pura lexical scope hi return hota hai 
+// Pura ka pura lexical scoping uth ke jata hai - Puri memory share hoti hai , na ki bas function ka executional context
+
+
+
+
+
+</script>
+<!-- This contains Closure  -->
+<script>
+
+    //-------------------Closure-------------------------
+// jab bhi aap pura function return karte ho, to uska function return nahi hota , pura ka pura lexical scope hi return hota hai 
+// Pura ka pura lexical scoping uth ke jata hai - Puri memory share hoti hai , na ki bas function ka executional context
+
+// document.getElementById('orange').addEventListener('click' , function(){
+//     document.body.style.backgroundColor = "Orange" ;
+// })
+// document.getElementById('green').onclick = () => {
+//     document.body.style.backgroundColor = "Green" ; 
+// };
+
+// but suppose we have to add 100 buttons with different colours
+
+// we made a function "clickhandler" which will do the work 
+    function clickHandler(color){ // color ka access niche wale function ko bhi hai (closure)
+        // document.body.style.backgroundColor = `${color}` ; // ye nahi chalega
+
+        return function(){
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+
+
+    document.getElementById('orange').onclick = clickHandler("orange") ; // closure
+    document.getElementById('green').onclick = clickHandler("Green") ;
+
+
+
+</script>
+
+</html>
